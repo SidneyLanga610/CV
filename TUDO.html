@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Sidney Langa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --text-light: #777;
+      --spacing: 1rem;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing);
+    }
+    
+    /* Header e Navegação */
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo i {
+      color: var(--secondary-color);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover {
+      background: var(--secondary-color);
+    }
+    
+    /* Página Inicial - Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      margin-bottom: 2rem;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+    
+    .hero-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--light-color);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: bold;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--light-color);
+    }
+    
+    .btn-outline:hover {
+      background: var(--light-color);
+      color: var(--primary-color);
+    }
+    
+    /* Cards de Navegação */
+    .navigation-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+    
+    .card i {
+      font-size: 3rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Seções de Conteúdo (ocultas inicialmente) */
+    .content-section {
+      display: none;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin: 2rem 0;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .active {
+      display: block;
+    }
+    
+    /* Estilos do CV */
+    .cv-header {
+      background: var(--primary-color);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+    }
+    
+    .cv-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      background: white;
+      margin: 2rem auto;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    
+    @media (max-width: 768px) {
+      .cv-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--light-color);
+      margin-bottom: 1rem;
+      transition: transform 0.3s;
+    }
+    
+    .profile-img:hover { 
+      transform: scale(1.05); 
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--light-color);
+      margin-bottom: 1rem;
+    }
+    
+    .sidebar {
+      background: var(--dark-color);
+      color: white;
+      padding: 2rem;
+    }
+    
+    .sidebar-section {
+      margin-bottom: 2rem;
+    }
+    
+    .sidebar h2 {
+      color: var(--light-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .contact-info {
+      list-style: none;
+    }
+    
+    .contact-info li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+      width: 20px;
+    }
+    
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-info a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .main-content {
+      padding: 2rem;
+    }
+    
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .section h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .summary {
+      background: var(--light-color);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li {
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .skills-list li:hover {
+      background: var(--accent-color);
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--dark-color);
+      color: white;
+      margin-top: 2rem;
+      border-radius: var(--border-radius);
+    }
+    
+    .divider {
+      height: 1px;
+      background: #ddd;
+      margin: 1.5rem 0;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem 0;
+      color: var(--text-light);
+    }
+    
+    .location i {
+      margin-right: 0.5rem;
+    }
+    
+    /* Estilos da Galeria Multimídia */
+    .multimedia-section {
+      background: #0e0e0e;
+      color: #e0e0e0;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+    }
+    
+    .multimedia-section h1, .multimedia-section h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .multimedia-section h1 {
+      font-size: 3rem;
+      background: linear-gradient(45deg, #00bcd4, #9c27b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .multimedia-section p {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      color: #aaa;
+      font-size: 1rem;
+    }
+    
+    .multimedia-section section {
+      margin-bottom: 80px;
+    }
+    
+    .multimedia-profile-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #00bcd4;
+      display: block;
+      margin: 30px auto;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.25);
+    }
+    
+    .multimedia-section audio, .multimedia-section video {
+      display: block;
+      margin: 20px auto;
+      width: 100%;
+      max-width: 720px;
+      border-radius: 10px;
+      background-color: #1a1a1a;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    
+    .multimedia-section hr {
+      margin: 60px auto;
+      max-width: 80%;
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #444, transparent);
+    }
+    
+    /* Galeria moderna */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item figcaption {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.7), transparent);
+      color: #fff;
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover figcaption {
+      opacity: 1;
+    }
+    
+    /* Estilos do Formulário */
+    .form-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .required::after {
+      content: " *";
+      color: var(--accent-color);
+    }
+    
+    /* Botão Voltar */
+    .back-btn {
+      background: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    
+    .back-btn:hover {
+      background: var(--primary-color);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .multimedia-section h1 {
+        font-size: 2.2rem;
+      }
+      
+      .multimedia-profile-img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header e Navegação -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-code"></i>
+          <span>Sidney Langa</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link" data-target="home">Início</a></li>
+          <li><a href="#" class="nav-link" data-target="cv">CV</a></li>
+          <li><a href="#" class="nav-link" data-target="multimedia">Multimédia</a></li>
+          <li><a href="#" class="nav-link" data-target="form">Formulário</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Página Inicial -->
+  <section id="home" class="content-section active">
+    <div class="hero">
+      <div class="container">
+        <img src="F:\IMAGENS\WhatsApp Image 2025-10-16 at 8.54.48 AM.JPEG" alt="Sidney Langa" class="hero-img">
+        <h1>Sidney Vasco Langa</h1>
+        <p>Técnico em Eletricidade, Informática, Web e Design Gráfico</p>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Cidade de Maputo, Moçambique</span>
+        </div>
+        <a href="#" class="btn nav-link" data-target="cv">Ver CV</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="navigation-cards">
+        <div class="card">
+          <i class="fas fa-file-alt"></i>
+          <h3>Currículo</h3>
+          <p>Conheça minha experiência profissional, formação acadêmica e habilidades técnicas.</p>
+          <a href="#" class="btn nav-link" data-target="cv">Ver CV</a>
+        </div>
+        
+        <div class="card">
+          <i class="fas fa-images"></i>
+          <h3>Galeria Multimédia</h3>
+          <p>Explore minha galeria de imagens, vídeos e projetos de design gráfico.</p>
+          <a href="#" class="btn nav-link" data-target="multimedia">Ver Galeria</a>
+        </div>
+        
+        <div class="card">
+          <i class="fas fa-envelope"></i>
+          <h3>Formulário de Contacto</h3>
+          <p>Entre em contacto comigo para oportunidades de trabalho ou colaborações.</p>
+          <a href="#" class="btn nav-link" data-target="form">Contactar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção do CV -->
+  <section id="cv" class="content-section">
+    <div class="container">
+      <button class="btn back-btn nav-link" data-target="home">
+        <i class="fas fa-arrow-left"></i> Voltar ao Início
+      </button>
+      
+      <!-- Cabeçalho do CV -->
+      <header class="cv-header">
+        <img src="F:\IMAGENS\WhatsApp Image 2025-10-16 at 8.54.49 AM (1).JPEG" alt="Foto de Sidney Vasco Langa" class="profile-img">
+        <h1>SIDNEY VASCO LANGA</h1>
+        <p class="tagline">Técnico em Eletricidade, Informática, Web e Design Gráfico</p>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Cidade de Maputo, Moçambique</span>
+        </div>
+      </header>
+
+      <div class="cv-container">
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h2>Contacto</h2>
+            <ul class="contact-info">
+              <li><i class="fas fa-phone"></i> +25887 21 90 544</li>
+              <li><i class="fas fa-envelope"></i> <a href="mailto:sidneyucp@gmail.com">sidneyucp@gmail.com</a></li>
+              <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/sidneylang16" target="_blank">@sidneylang16</a></li>
+              <li><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/100084721892778/posts/686928527474538/" target="_blank">Sidney Langa</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h2>Competências</h2>
+            <ul class="skills-list">
+              <li><i class="fas fa-code"></i> Desenvolvimento Web</li>
+              <li><i class="fab fa-html5"></i> HTML</li>
+              <li><i class="fas fa-paint-brush"></i> Design Gráfico</li>
+              <li><i class="fas fa-desktop"></i> Suporte Informático</li>
+              <li><i class="fas fa-tools"></i> Manutenção de Hardware</li>
+              <li><i class="fas fa-database"></i> Recuperação de Dados</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h2>Habilidades Pessoais</h2>
+            <ul>
+              <li>Boa comunicação</li>
+              <li>Proatividade</li>
+              <li>Criatividade</li>
+              <li>Organização</li>
+              <li>Trabalho em equipe</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h2>Cursos</h2>
+            <ul>
+              <li>Design Gráfico</li>
+              <li>Informática Básica</li>
+            </ul>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <section class="section">
+            <div class="summary">
+              <p>Técnico moçambicano com experiência em Eletricidade, Informática, Web e Design Gráfico. Capacidade de integrar soluções técnicas e criativas com foco em usabilidade e funcionalidade. Perfil proativo, responsável e com forte espírito de equipa. Experiência em projetos práticos e busca contínua por formação complementar. Em busca de oportunidades para aplicar e expandir seus conhecimentos.</p>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Sobre</h2>
+            <p>Sou um profissional dedicado e versátil, com formações nas áreas de Electricidade, Suporte Informático, Programação Web e Design Gráfico. Tenho paixão por tecnologia e criatividade, e estou em busca de oportunidades onde possa aplicar os meus conhecimentos e continuar a crescer profissionalmente.</p>
+          </section>
+
+          <div class="divider"></div>
+
+          <section class="section">
+            <h2>Experiência</h2>
+            <ol>
+              <li>Criação de páginas web com HTML</li>
+              <li>Criação de páginas que funcionam em telemóveis e computadores</li>
+              <li>Criação de backups e recuperação de dados</li>
+              <li>Configuração de computadores</li>
+            </ol>
+          </section>
+
+          <div class="divider"></div>
+
+          <section class="section">
+            <h2>Educação</h2>
+            <ul>
+              <li><strong>2021</strong> - Conclui o ensino secundário</li>
+              <li><strong>2022</strong> - Curso de Design Gráfico</li>
+              <li><strong>2023</strong> - Curso de Informática e Programação Web</li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Multimídia -->
+  <section id="multimedia" class="content-section">
+    <div class="container">
+      <button class="btn back-btn nav-link" data-target="home">
+        <i class="fas fa-arrow-left"></i> Voltar ao Início
+      </button>
+      
+      <div class="multimedia-section">
+        <h1>Galeria Multimédia</h1>
+
+        <!-- Imagem de Perfil -->
+        <section>
+          <h2>Imagem de Perfil</h2>
+          <p>Representação visual do utilizador.</p>
+          <img class="multimedia-profile-img" src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 1.56.59 PM.jpeg" alt="Imagem de perfil">
+        </section>
+
+        <!-- Música -->
+        <section>
+          <h2>Música Ambiente</h2>
+          <p>Uma música agitante.</p>
+          <audio controls>
+            <source src="F:\IMAGENS\AUD-20210326-WA0017.mp3" type="audio/mpeg">
+            O seu navegador não suporta áudio.
+          </audio>
+        </section>
+
+        <!-- Vídeo -->
+        <section>
+          <h2>Vídeo de Aprendizagem</h2>
+          <p>Um vídeo sobre como mudar QUALQUER COR no Photoshop </p>
+          <video controls poster="https://via.placeholder.com/720x405">
+            <source src="F:\IMAGENS\Como criar TEXTURAS no Photoshop_ Os 3 Métodos.mp4" type="video/mp4">
+            O seu navegador não suporta vídeo.
+          </video>
+        </section>
+
+        <hr>
+
+        <!-- Galeria de Imagens -->
+        <section>
+          <h2>Galeria de Imagens</h2>
+          <p>Explore as imagens abaixo</p>
+
+          <div class="gallery">
+            <div class="gallery-item">
+              <img src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 2.03.36 PM.jpeg" alt="Imagem 1">
+              <figcaption>Montanhas ao entardecer</figcaption>
+            </div>
+            <div class="gallery-item">
+              <img src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 2.03.39 PM.jpeg" alt="Imagem 2">
+              <figcaption>Praia deserta</figcaption>
+            </div>
+            <div class="gallery-item">
+              <img src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 2.42.16 PM.jpeg" alt="Imagem 3">
+              <figcaption>Floresta tropical</figcaption>
+            </div>
+            <div class="gallery-item">
+              <img src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 2.03.37 PM.jpeg" alt="Imagem 4">
+              <figcaption>Vida urbana à noite</figcaption>
+            </div>
+            <div class="gallery-item">
+              <img src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 2.03.38 PM.jpeg" alt="Imagem 5">
+              <figcaption>Campo florido</figcaption>
+            </div>
+            <div class="gallery-item">
+              <img src="F:\IMAGENS\WhatsApp Image 2025-10-02 at 2.43.41 PM.jpeg" alt="Imagem 6">
+              <figcaption>Neve nas montanhas</figcaption>
+            </div>
+          </div>
+        </section>
+
+        <!-- Vídeo informativo -->
+        <section>
+          <h2>Video Aula</h2>
+          <p>Uma curta apresentação sobre como criar texturas usando o Photoshop.</p>
+          <video controls poster="https://via.placeholder.com/720x405">
+            <source src="F:\IMAGENS\Como mudar QUALQUER COR no Photoshop.mp4" type="video/mp4">
+            O seu navegador não suporta vídeo.
+          </video>
+          <figcaption style="text-align:center; margin-top: 10px; font-size: 14px; color: #999;">Aula do curso de Photoshop.</figcaption>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção do Formulário -->
+  <section id="form" class="content-section">
+    <div class="container">
+      <button class="btn back-btn nav-link" data-target="home">
+        <i class="fas fa-arrow-left"></i> Voltar ao Início
+      </button>
+      
+      <div class="form-section">
+        <h2 class="text-center">Formulário de Contacto</h2>
+        <p class="text-center">Preencha o formulário abaixo para entrar em contacto comigo.</p>
+        
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="required">Nome Completo</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="required">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject" class="required">Assunto</label>
+              <select id="subject" name="subject" required>
+                <option value="">Selecione um assunto</option>
+                <option value="trabalho">Proposta de Trabalho</option>
+                <option value="orcamento">Pedido de Orçamento</option>
+                <option value="colaboracao">Colaboração</option>
+                <option value="duvida">Dúvida</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="required">Mensagem</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="btn" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i> Enviar Mensagem
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sidney Langa. Todos os direitos reservados.</p>
+      <p>
+        <a href="mailto:sidneyucp@gmail.com" style="color: var(--light-color); text-decoration: none;">
+          <i class="fas fa-envelope"></i> sidneyucp@gmail.com
+        </a> 
+        | 
+        <a href="tel:+25887 21 90 544" style="color: var(--light-color); text-decoration: none;">
+          <i class="fas fa-phone"></i> +25887 21 90 544
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Navegação entre seções
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const contentSections = document.querySelectorAll('.content-section');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('data-target');
+          
+          // Esconder todas as seções
+          contentSections.forEach(section => {
+            section.classList.remove('active');
+          });
+          
+          // Mostrar a seção alvo
+          document.getElementById(targetId).classList.add('active');
+          
+          // Rolagem suave para o topo
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // Manipulação do formulário
+      const contactForm = document.getElementById('contact-form');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validação básica
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        if (name && email && subject && message) {
+          alert('Obrigado pela sua mensagem! Entrarei em contacto em breve.');
+          contactForm.reset();
+        } else {
+          alert('Por favor, preencha todos os campos obrigatórios.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
